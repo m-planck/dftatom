@@ -51,7 +51,7 @@ end function
 subroutine spline3ders(x, y, xnew, ynew, dynew, d2ynew)
 ! Just like 'spline', but also calculate 1st and 2nd derivatives
 real(dp), intent(in) :: x(:), y(:), xnew(:)
-real(dp), intent(out), optional :: ynew(:), dynew(:), d2ynew(:)
+real(dp), intent(out), optional :: ynew(size(xnew)), dynew(size(xnew)), d2ynew(size(xnew))
 real(dp) :: c(0:4, size(x)-1)
 integer :: i, ip
 call spline3pars(x, y, [2, 2], [0._dp, 0._dp], c)

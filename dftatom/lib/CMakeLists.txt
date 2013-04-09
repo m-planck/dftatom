@@ -4,10 +4,11 @@ set(SRC
 
 include_directories(${PYTHON_INCLUDE_PATH} ${NUMPY_INCLUDE_PATH})
 include_directories(${dftatom_BINARY_DIR}/src)
+include_directories(${CMAKE_SOURCE_DIR}/src)
 
 cython_add_module_pyx(dftatom_wrapper)
 add_python_library(dftatom_wrapper ${SRC})
-target_link_libraries(dftatom_wrapper dftatom)
+target_link_libraries(dftatom_wrapper ${PYTHON_LIBRARY} dftatom)
 
 add_custom_target(cython
     COMMAND cython dftatom_wrapper.pyx
